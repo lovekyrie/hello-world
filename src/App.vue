@@ -1,15 +1,24 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <Inputer @submit="subSubmit"></Inputer>
+  <div v-for="(todo, index) in list" :key="index">{{ todo }}</div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
+import Inputer from "./components/Inputer.vue";
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    Inputer,
+  },
+  data() {
+    return {
+      list: [],
+    };
+  },
+  methods: {
+    subSubmit(e) {
+      this.list.push(e);
+    },
   },
 };
 </script>
